@@ -26,9 +26,4 @@ coverage:
     enabled: true
     whitelist:
       include:
-          - app/src/*
-      exclude:
-        - app/src/Service/DefaultInjector.php
-        - app/src/Application.php
-        - app/src/Api/PdfGeneratorV1.php
-        - app/src/Worker/ChromeHeadless.php
+          - src/*
