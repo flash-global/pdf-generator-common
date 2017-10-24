@@ -24,7 +24,7 @@ class PdfContainer extends AbstractEntity
     /**
      * @return string
      */
-    public function getData(): string
+    public function getData()
     {
         return $this->data;
     }
@@ -34,7 +34,7 @@ class PdfContainer extends AbstractEntity
      *
      * @return PdfContainer
      */
-    public function setData(string $data): PdfContainer
+    public function setData($data)
     {
         $this->data = $data;
 
@@ -44,7 +44,7 @@ class PdfContainer extends AbstractEntity
     /**
      * @return string
      */
-    public function getOriginName(): string
+    public function getOriginName()
     {
         return $this->originName;
     }
@@ -54,7 +54,7 @@ class PdfContainer extends AbstractEntity
      *
      * @return PdfContainer
      */
-    public function setOriginName(string $originName): PdfContainer
+    public function setOriginName($originName)
     {
         $this->originName = $originName;
 
