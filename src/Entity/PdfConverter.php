@@ -33,6 +33,9 @@ class PdfConverter extends AbstractEntity
     /** @var bool */
     protected $download;
 
+    /** @var string */
+    protected $outputFilename;
+
     /**
      * @return int
      */
@@ -109,6 +112,26 @@ class PdfConverter extends AbstractEntity
     public function setDownload($download)
     {
         $this->download = $download;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getOutputFilename()
+    {
+        return $this->outputFilename;
+    }
+
+    /**
+     * @param string $outputFilename
+     *
+     * @return $this
+     */
+    public function setOutputFilename($outputFilename)
+    {
+        $this->outputFilename = $outputFilename;
 
         return $this;
     }
