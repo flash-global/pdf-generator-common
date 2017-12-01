@@ -22,17 +22,20 @@ class PdfConverterTest extends \PHPUnit_Framework_TestCase
             'data' => 'sbleh',
             'store' => PdfConverter::STORE_FILER,
             'download' => true,
+            'outputFilename' => 'test',
         ];
 
         $pdfContainer = new PdfConverter();
         $pdfContainer->setType($values['type'])
             ->setData($values['data'])
             ->setDownload($values['download'])
-            ->setStore($values['store']);
+            ->setStore($values['store'])
+            ->setOutputFilename($values['outputFilename']);
 
         $this->assertEquals($values['type'], $pdfContainer->getType());
         $this->assertEquals($values['data'], $pdfContainer->getData());
         $this->assertEquals($values['download'], $pdfContainer->isDownload());
         $this->assertEquals($values['store'], $pdfContainer->getStore());
+        $this->assertEquals($values['outputFilename'], $pdfContainer->getOutputFilename());
     }
 }
