@@ -18,7 +18,7 @@ class PdfContainer extends AbstractEntity
     /** @var int */
     protected $responseStatus;
 
-    /** @var PdfContainer */
+    /** @var PdfConverter */
     protected $sourceContainer;
 
     /** @var string */
@@ -45,7 +45,7 @@ class PdfContainer extends AbstractEntity
     }
 
     /**
-     * @return PdfContainer
+     * @return PdfConverter
      */
     public function getSourceContainer()
     {
@@ -53,11 +53,11 @@ class PdfContainer extends AbstractEntity
     }
 
     /**
-     * @param PdfContainer $sourceContainer
+     * @param PdfConverter $sourceContainer
      *
      * @return $this
      */
-    public function setSourceContainer(PdfContainer $sourceContainer)
+    public function setSourceContainer(PdfConverter $sourceContainer)
     {
         $this->sourceContainer = $sourceContainer;
 
