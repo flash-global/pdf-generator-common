@@ -26,7 +26,7 @@ class PdfContainerTransformer extends TransformerAbstract
 
         return [
             'responseStatus' => $pdfContainer->getResponseStatus(),
-            'sourceContainer' => $pdfConverterTransformer->$pdfContainer->getSourceContainer(),
+            'sourceContainer' => $pdfConverterTransformer->transform($pdfContainer->getSourceContainer()),
             'url' => $pdfContainer->getUrl(),
         ];
     }
