@@ -15,28 +15,51 @@ use Fei\Entity\AbstractEntity;
  */
 class PdfContainer extends AbstractEntity
 {
-    /** @var string */
-    protected $data;
+    /** @var int */
+    protected $responseStatus;
+
+    /** @var PdfContainer */
+    protected $sourceContainer;
 
     /** @var string */
-    protected $originName;
+    protected $url;
 
     /**
-     * @return string
+     * @return int
      */
-    public function getData()
+    public function getResponseStatus()
     {
-        return $this->data;
+        return $this->responseStatus;
     }
 
     /**
-     * @param string $data
+     * @param int $responseStatus
      *
+     * @return $this
+     */
+    public function setResponseStatus($responseStatus)
+    {
+        $this->responseStatus = $responseStatus;
+
+        return $this;
+    }
+
+    /**
      * @return PdfContainer
      */
-    public function setData($data)
+    public function getSourceContainer()
     {
-        $this->data = $data;
+        return $this->sourceContainer;
+    }
+
+    /**
+     * @param PdfContainer $sourceContainer
+     *
+     * @return $this
+     */
+    public function setSourceContainer(PdfContainer $sourceContainer)
+    {
+        $this->sourceContainer = $sourceContainer;
 
         return $this;
     }
@@ -44,19 +67,19 @@ class PdfContainer extends AbstractEntity
     /**
      * @return string
      */
-    public function getOriginName()
+    public function getUrl()
     {
-        return $this->originName;
+        return $this->url;
     }
 
     /**
-     * @param string $originName
+     * @param string $url
      *
-     * @return PdfContainer
+     * @return $this
      */
-    public function setOriginName($originName)
+    public function setUrl($url)
     {
-        $this->originName = $originName;
+        $this->url = $url;
 
         return $this;
     }

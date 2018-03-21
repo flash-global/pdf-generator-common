@@ -22,9 +22,12 @@ class PdfContainerTransformer extends TransformerAbstract
      */
     public function transform(PdfContainer $pdfContainer)
     {
+        $pdfConverterTransformer = new PdfConverterTransformer();
+
         return [
-            'data' => $pdfContainer->getData(),
-            'originName' => $pdfContainer->getOriginName()
+            'responseStatus' => $pdfContainer->getResponseStatus(),
+            'sourceContainer' => $pdfConverterTransformer->$pdfContainer->getSourceContainer(),
+            'url' => $pdfContainer->getUrl(),
         ];
     }
 }
