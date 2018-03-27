@@ -18,9 +18,6 @@ class PdfConverter extends AbstractEntity
     const URL = 1;
     const HTML = 2;
 
-    const NO_STORE = 0;
-    const STORE_FILER = 1;
-
     /** @var integer */
     protected $type;
 
@@ -28,7 +25,7 @@ class PdfConverter extends AbstractEntity
     protected $data;
 
     /** @var string */
-    protected $store = self::NO_STORE;
+    protected $store = Store::NONE;
 
     /** @var bool */
     protected $download;
