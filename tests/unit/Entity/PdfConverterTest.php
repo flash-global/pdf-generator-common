@@ -9,6 +9,7 @@
 namespace Tests\PdfGenerator\Entity;
 
 use PdfGenerator\Entity\PdfConverter;
+use PdfGenerator\Entity\Store;
 
 /**
  * PdfConverterTest
@@ -20,22 +21,36 @@ class PdfConverterTest extends \PHPUnit_Framework_TestCase
         $values = [
             'type' => PdfConverter::HTML,
             'data' => 'sbleh',
-            'store' => PdfConverter::STORE_FILER,
+            'store' => Store::FILER,
             'download' => true,
+            'category' => 1,
             'outputFilename' => 'test',
         ];
 
-        $pdfContainer = new PdfConverter();
-        $pdfContainer->setType($values['type'])
+        $pdfConverter = new PdfConverter();
+        $pdfConverter->setType($values['type'])
             ->setData($values['data'])
             ->setDownload($values['download'])
             ->setStore($values['store'])
+            ->setCategory($values['category'])
             ->setOutputFilename($values['outputFilename']);
 
-        $this->assertEquals($values['type'], $pdfContainer->getType());
-        $this->assertEquals($values['data'], $pdfContainer->getData());
-        $this->assertEquals($values['download'], $pdfContainer->isDownload());
-        $this->assertEquals($values['store'], $pdfContainer->getStore());
-        $this->assertEquals($values['outputFilename'], $pdfContainer->getOutputFilename());
+        $this->assertEquals($values['type'], $pdfConverter->getType());
+        $this->assertEquals($values['data'], $pdfConverter->getData());
+        $this->assertEquals($values['download'], $pdfConverter->isDownload());
+        $this->assertEquals($values['store'], $pdfConverter->getStore());
+        $this->assertEquals($values['category'], $pdfConverter->getCategory());
+        $this->assertEquals($values['outputFilename'], $pdfConverter->getOutputFilename());
+    }
+
+    /**
+     * @expectedException \Exception
+     * @throws \Exception
+     */
+    public function testWrongType()
+    {
+        $pdfConverter = new PdfConverter();
+
+        $pdfConverter->setType(5464);
     }
 }

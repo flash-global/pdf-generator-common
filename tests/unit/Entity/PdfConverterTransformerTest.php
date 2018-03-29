@@ -10,37 +10,44 @@ namespace Tests\PdfGenerator\Entity;
 
 use PdfGenerator\Entity\PdfConverter;
 use PdfGenerator\Entity\PdfConverterTransformer;
+use PdfGenerator\Entity\Store;
 
 /**
  * PdfConverterTransformerTest
  */
 class PdfConverterTransformerTest extends \PHPUnit_Framework_TestCase
 {
+    /**
+     * @throws \Exception
+     */
     public function testTransformer()
     {
         $values = [
             'type' => PdfConverter::HTML,
             'data' => 'sbleh',
-            'store' => PdfConverter::STORE_FILER,
+            'store' => Store::FILER,
             'download' => true,
+            'category' => 1,
             'outputFilename' => 'test',
         ];
 
-        $pdfContainer = new PdfConverter();
-        $pdfContainer->setType($values['type'])
+        $pdfConverter = new PdfConverter();
+        $pdfConverter->setType($values['type'])
             ->setData($values['data'])
             ->setDownload($values['download'])
             ->setStore($values['store'])
+            ->setCategory($values['category'])
             ->setOutputFilename($values['outputFilename']);
 
-        $pdfContainerTransformer = new PdfConverterTransformer();
+        $pdfConverterTransformer = new PdfConverterTransformer();
 
-        $transformed = $pdfContainerTransformer->transform($pdfContainer);
+        $transformed = $pdfConverterTransformer->transform($pdfConverter);
 
-        $this->assertEquals($transformed['type'], $pdfContainer->getType());
-        $this->assertEquals($transformed['data'], $pdfContainer->getData());
-        $this->assertEquals($transformed['store'], $pdfContainer->getStore());
-        $this->assertEquals($transformed['download'], $pdfContainer->isDownload());
-        $this->assertEquals($transformed['outputFilename'], $pdfContainer->getOutputFilename());
+        $this->assertEquals($transformed['type'], $pdfConverter->getType());
+        $this->assertEquals($transformed['data'], $pdfConverter->getData());
+        $this->assertEquals($transformed['store'], $pdfConverter->getStore());
+        $this->assertEquals($transformed['download'], $pdfConverter->isDownload());
+        $this->assertEquals($transformed['category'], $pdfConverter->getCategory());
+        $this->assertEquals($transformed['outputFilename'], $pdfConverter->getOutputFilename());
     }
 }

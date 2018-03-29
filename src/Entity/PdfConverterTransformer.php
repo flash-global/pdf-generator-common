@@ -22,6 +22,7 @@ class PdfConverterTransformer extends TransformerAbstract
             'download' => $pdfConverter->isDownload(),
             'data' => $pdfConverter->getData(),
             'type' => $pdfConverter->getType(),
+            'category' => $pdfConverter->getCategory(),
             'outputFilename' => $pdfConverter->getOutputFilename(),
         ];
     }

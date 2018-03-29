@@ -33,6 +33,8 @@ class PdfConverter extends AbstractEntity
     /** @var string */
     protected $outputFilename;
 
+    protected $category;
+
     /**
      * @return int
      */
@@ -45,9 +47,14 @@ class PdfConverter extends AbstractEntity
      * @param int $type
      *
      * @return $this
+     * @throws \Exception
      */
     public function setType($type)
     {
+        if ($type != PdfConverter::URL && $type != PdfConverter::HTML) {
+            throw new \Exception('Wrong type of file descriptor');
+        }
+
         $this->type = $type;
 
         return $this;
@@ -129,6 +136,26 @@ class PdfConverter extends AbstractEntity
     public function setOutputFilename($outputFilename)
     {
         $this->outputFilename = $outputFilename;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * @param mixed $category
+     *
+     * @return $this
+     */
+    public function setCategory($category)
+    {
+        $this->category = $category;
 
         return $this;
     }
