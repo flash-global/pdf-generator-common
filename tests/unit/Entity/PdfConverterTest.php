@@ -53,4 +53,16 @@ class PdfConverterTest extends \PHPUnit_Framework_TestCase
 
         $pdfConverter->setType(5464);
     }
+
+    /**
+     * @expectedException \Exception
+     * @throws \Exception
+     */
+    public function testWrongData()
+    {
+        $pdfConverter = new PdfConverter();
+
+        $pdfConverter->setType(PdfConverter::URL)
+            ->setData('www.google.fr');
+    }
 }

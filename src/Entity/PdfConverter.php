@@ -72,9 +72,13 @@ class PdfConverter extends AbstractEntity
      * @param string $data
      *
      * @return $this
+     * @throws \Exception
      */
     public function setData($data)
     {
+        if ($this->getType() == PdfConverter::URL && strpos(substr($data, 0, 5), 'http') === false) {
+            throw new \Exception(sprintf('Error : Given URL MUST contain the protocol. Current : %s', $data));
+        }
         $this->data = $data;
 
         return $this;

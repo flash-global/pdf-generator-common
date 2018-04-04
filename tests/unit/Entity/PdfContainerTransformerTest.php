@@ -10,6 +10,8 @@ namespace Tests\PdfGenerator\Entity;
 
 use PdfGenerator\Entity\PdfContainer;
 use PdfGenerator\Entity\PdfContainerTransformer;
+use PdfGenerator\Entity\PdfConverter;
+use PdfGenerator\Entity\PdfConverterTransformer;
 
 /**
  * PdfContainerTransformerTest
@@ -19,19 +21,26 @@ class PdfContainerTransformerTest extends \PHPUnit_Framework_TestCase
     public function testTransformer()
     {
         $values = [
-            'data' => 'sbleh',
-            'originName' => 'bloubloublou.pdf'
+            'responseStatus' => 200,
+            'sourceContainer' => new PdfConverter(),
+            'url' => 'www.pdf.fr',
         ];
 
         $pdfContainer = new PdfContainer();
-        $pdfContainer->setData($values['data'])
-            ->setOriginName($values['originName']);
+        $pdfContainer->setResponseStatus($values['responseStatus'])
+            ->setSourceContainer($values['sourceContainer'])
+            ->setUrl($values['url']);
 
         $pdfContainerTransformer = new PdfContainerTransformer();
 
         $transformed = $pdfContainerTransformer->transform($pdfContainer);
 
-        $this->assertEquals($transformed['data'], $pdfContainer->getData());
-        $this->assertEquals($transformed['originName'], $pdfContainer->getOriginName());
+        $pdfConverterTransformer = new PdfConverterTransformer();
+
+        $sourceContainer = $pdfConverterTransformer->transform($pdfContainer->getSourceContainer());
+
+        $this->assertEquals($transformed['responseStatus'], $pdfContainer->getResponseStatus());
+        $this->assertEquals($transformed['sourceContainer'], $sourceContainer);
+        $this->assertEquals($transformed['url'], $pdfContainer->getUrl());
     }
 }
