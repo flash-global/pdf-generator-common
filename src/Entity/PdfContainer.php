@@ -8,12 +8,12 @@
 
 namespace PdfGenerator\Entity;
 
-use Fei\Entity\AbstractEntity;
+use ObjectivePHP\Gateway\Entity\Entity;
 
 /**
  * PdfContainer
  */
-class PdfContainer extends AbstractEntity
+class PdfContainer extends Entity
 {
     /** @var int */
     protected $responseStatus;

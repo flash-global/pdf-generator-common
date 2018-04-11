@@ -10,7 +10,8 @@
   ],
   "require": {
     "fei/entities": "^1.0.0",
-    "league/fractal": "^0.14.0"
+    "league/fractal": "^0.14.0",
+    "objective-php/gateway": "^1.0.0"
   },
   "autoload": {
     "psr-4": {

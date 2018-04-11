@@ -8,12 +8,12 @@
 
 namespace PdfGenerator\Entity;
 
-use Fei\Entity\AbstractEntity;
+use ObjectivePHP\Gateway\Entity\Entity;
 
 /**
  * PdfConverter
  */
-class PdfConverter extends AbstractEntity
+class PdfConverter extends Entity
 {
     const URL = 1;
     const HTML = 2;
@@ -33,6 +33,7 @@ class PdfConverter extends AbstractEntity
     /** @var string */
     protected $outputFilename;
 
+    /** @var mixed */
     protected $category;
 
     /**
