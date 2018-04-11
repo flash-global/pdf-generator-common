@@ -6,9 +6,10 @@
  * @file        PdfContainerTransformer.php
  */
 
-namespace PdfGenerator\Entity;
+namespace PdfGenerator\Transformer;
 
 use League\Fractal\TransformerAbstract;
+use PdfGenerator\Entity\PdfContainer;
 
 /**
  * PdfContainerTransformer

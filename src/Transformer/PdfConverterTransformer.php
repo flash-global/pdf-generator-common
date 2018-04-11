@@ -6,15 +6,21 @@
  * @file        PdfConverterTransformer.php
  */
 
-namespace PdfGenerator\Entity;
+namespace PdfGenerator\Transformer;
 
 use League\Fractal\TransformerAbstract;
+use PdfGenerator\Entity\PdfConverter;
 
 /**
  * PdfConverterTransformer
  */
 class PdfConverterTransformer extends TransformerAbstract
 {
+    /**
+     * @param PdfConverter $pdfConverter
+     *
+     * @return array
+     */
     public function transform(PdfConverter $pdfConverter)
     {
         return [

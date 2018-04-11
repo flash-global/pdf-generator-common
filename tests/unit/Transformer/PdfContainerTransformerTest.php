@@ -6,17 +6,18 @@
  * @file        PdfContainerTransformerTest.php
  */
 
-namespace Tests\PdfGenerator\Entity;
+namespace Tests\PdfGenerator\Transformer;
 
 use PdfGenerator\Entity\PdfContainer;
-use PdfGenerator\Entity\PdfContainerTransformer;
 use PdfGenerator\Entity\PdfConverter;
-use PdfGenerator\Entity\PdfConverterTransformer;
+use PdfGenerator\Transformer\PdfContainerTransformer;
+use PdfGenerator\Transformer\PdfConverterTransformer;
+use PHPUnit\Framework\TestCase;
 
 /**
  * PdfContainerTransformerTest
  */
-class PdfContainerTransformerTest extends \PHPUnit_Framework_TestCase
+class PdfContainerTransformerTest extends TestCase
 {
     public function testTransformer()
     {

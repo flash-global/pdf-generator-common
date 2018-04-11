@@ -10,11 +10,12 @@ namespace Tests\PdfGenerator\Entity;
 
 use PdfGenerator\Entity\PdfContainer;
 use PdfGenerator\Entity\PdfConverter;
+use PHPUnit\Framework\TestCase;
 
 /**
  * PdfContainerTest
  */
-class PdfContainerTest extends \PHPUnit_Framework_TestCase
+class PdfContainerTest extends TestCase
 {
     public function testEntity()
     {
