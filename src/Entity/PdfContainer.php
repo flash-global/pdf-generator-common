@@ -8,35 +8,58 @@
 
 namespace PdfGenerator\Entity;
 
-use Fei\Entity\AbstractEntity;
+use ObjectivePHP\Gateway\Entity\Entity;
 
 /**
  * PdfContainer
  */
-class PdfContainer extends AbstractEntity
+class PdfContainer extends Entity
 {
-    /** @var string */
-    protected $data;
+    /** @var int */
+    protected $responseStatus;
+
+    /** @var PdfConverter */
+    protected $sourceContainer;
 
     /** @var string */
-    protected $originName;
+    protected $url;
 
     /**
-     * @return string
+     * @return int
      */
-    public function getData()
+    public function getResponseStatus()
     {
-        return $this->data;
+        return $this->responseStatus;
     }
 
     /**
-     * @param string $data
+     * @param int $responseStatus
      *
-     * @return PdfContainer
+     * @return $this
      */
-    public function setData($data)
+    public function setResponseStatus($responseStatus)
     {
-        $this->data = $data;
+        $this->responseStatus = $responseStatus;
+
+        return $this;
+    }
+
+    /**
+     * @return PdfConverter
+     */
+    public function getSourceContainer()
+    {
+        return $this->sourceContainer;
+    }
+
+    /**
+     * @param PdfConverter $sourceContainer
+     *
+     * @return $this
+     */
+    public function setSourceContainer(PdfConverter $sourceContainer)
+    {
+        $this->sourceContainer = $sourceContainer;
 
         return $this;
     }
@@ -44,19 +67,19 @@ class PdfContainer extends AbstractEntity
     /**
      * @return string
      */
-    public function getOriginName()
+    public function getUrl()
     {
-        return $this->originName;
+        return $this->url;
     }
 
     /**
-     * @param string $originName
+     * @param string $url
      *
-     * @return PdfContainer
+     * @return $this
      */
-    public function setOriginName($originName)
+    public function setUrl($url)
     {
-        $this->originName = $originName;
+        $this->url = $url;
 
         return $this;
     }

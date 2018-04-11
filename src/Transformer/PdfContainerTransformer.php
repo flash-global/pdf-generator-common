@@ -6,9 +6,10 @@
  * @file        PdfContainerTransformer.php
  */
 
-namespace PdfGenerator\Entity;
+namespace PdfGenerator\Transformer;
 
 use League\Fractal\TransformerAbstract;
+use PdfGenerator\Entity\PdfContainer;
 
 /**
  * PdfContainerTransformer
@@ -22,9 +23,12 @@ class PdfContainerTransformer extends TransformerAbstract
      */
     public function transform(PdfContainer $pdfContainer)
     {
+        $pdfConverterTransformer = new PdfConverterTransformer();
+
         return [
-            'data' => $pdfContainer->getData(),
-            'originName' => $pdfContainer->getOriginName()
+            'responseStatus' => $pdfContainer->getResponseStatus(),
+            'sourceContainer' => $pdfConverterTransformer->transform($pdfContainer->getSourceContainer()),
+            'url' => $pdfContainer->getUrl(),
         ];
     }
 }

@@ -8,18 +8,15 @@
 
 namespace PdfGenerator\Entity;
 
-use Fei\Entity\AbstractEntity;
+use ObjectivePHP\Gateway\Entity\Entity;
 
 /**
  * PdfConverter
  */
-class PdfConverter extends AbstractEntity
+class PdfConverter extends Entity
 {
     const URL = 1;
     const HTML = 2;
-
-    const NO_STORE = 0;
-    const STORE_FILER = 1;
 
     /** @var integer */
     protected $type;
@@ -28,13 +25,16 @@ class PdfConverter extends AbstractEntity
     protected $data;
 
     /** @var string */
-    protected $store = self::NO_STORE;
+    protected $store = Store::NONE;
 
     /** @var bool */
     protected $download;
 
     /** @var string */
     protected $outputFilename;
+
+    /** @var mixed */
+    protected $category;
 
     /**
      * @return int
@@ -48,9 +48,14 @@ class PdfConverter extends AbstractEntity
      * @param int $type
      *
      * @return $this
+     * @throws \Exception
      */
     public function setType($type)
     {
+        if ($type != PdfConverter::URL && $type != PdfConverter::HTML) {
+            throw new \Exception('Wrong type of file descriptor');
+        }
+
         $this->type = $type;
 
         return $this;
@@ -68,9 +73,13 @@ class PdfConverter extends AbstractEntity
      * @param string $data
      *
      * @return $this
+     * @throws \Exception
      */
     public function setData($data)
     {
+        if ($this->getType() == PdfConverter::URL && strpos(substr($data, 0, 5), 'http') === false) {
+            throw new \Exception(sprintf('Error : Given URL MUST contain the protocol. Current : %s', $data));
+        }
         $this->data = $data;
 
         return $this;
@@ -132,6 +141,26 @@ class PdfConverter extends AbstractEntity
     public function setOutputFilename($outputFilename)
     {
         $this->outputFilename = $outputFilename;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * @param mixed $category
+     *
+     * @return $this
+     */
+    public function setCategory($category)
+    {
+        $this->category = $category;
 
         return $this;
     }
